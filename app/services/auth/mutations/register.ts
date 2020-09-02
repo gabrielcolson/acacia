@@ -8,11 +8,11 @@ export default async function register(
   ctx: { session?: SessionContext } = {}
 ) {
   // This throws an error if input is invalid
-  const { email, password } = RegisterInput.parse(input)
+  const { email, password, name } = RegisterInput.parse(input)
 
   const hashedPassword = await hashPassword(password)
   const user = await db.user.create({
-    data: { email, hashedPassword, role: "user" },
+    data: { email, name, hashedPassword, role: "user" },
     select: { id: true, name: true, email: true, role: true },
   })
 

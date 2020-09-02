@@ -16,12 +16,13 @@ const RegisterPage: BlitzPage = () => {
       <Heading textAlign="center" mb={5}>
         Create an Account
       </Heading>
+
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={async (values, { setFieldError, setStatus }) => {
           try {
             await register(values)
-            await router.push("/")
+            await router.push("/dashboard")
           } catch (error) {
             if (error.code === "P2002" && error.meta?.target?.includes("email")) {
               // This error comes from Prisma
@@ -42,16 +43,20 @@ const RegisterPage: BlitzPage = () => {
         {({ isSubmitting, status }) => (
           <Stack maxW="xl" as={Form} width="full" shouldWrapChildren spacing={3}>
             <TextInput name="email" label="Email" />
+            <TextInput name="name" label="Name" />
             <TextInput name="password" label="Password" type="password" />
+
             <Button variantColor="teal" width="full" type="submit" isLoading={isSubmitting}>
               Register
             </Button>
+
             <FormControl isInvalid={!!status}>
               <FormErrorMessage>{status}</FormErrorMessage>
             </FormControl>
           </Stack>
         )}
       </Formik>
+
       <BlitzLink href="/login">
         <Link mt={3}>Already have an account? Log in</Link>
       </BlitzLink>

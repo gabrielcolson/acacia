@@ -81,7 +81,7 @@ acacia
 │   │   ├── Form.tsx
 │   │   └── LabeledTextField.tsx
 │   ├── hooks
-│   │   └── useCurrentUser.ts
+│   │   └── useMaybeCurrentUser.ts
 │   ├── layouts
 │   │   └── Layout.tsx
 │   │── pages

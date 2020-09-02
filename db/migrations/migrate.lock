@@ -1,3 +1,4 @@
 # Prisma Migrate lockfile v1
 
 20200902161610-add-user-model
+20200902211300-remove-nullable-name

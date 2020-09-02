@@ -21,7 +21,7 @@ const LoginPage: BlitzPage = () => {
         onSubmit={async (values, { setFieldError, setStatus }) => {
           try {
             await login(values)
-            await router.push("/")
+            await router.push("/dashboard")
           } catch (error) {
             if (error.name === "AuthenticationError") {
               // This error comes from Prisma
