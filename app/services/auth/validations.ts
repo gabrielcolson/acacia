@@ -1,10 +1,10 @@
 import * as z from "zod"
 
-export const SignupInput = z.object({
+export const RegisterInput = z.object({
   email: z.string().email(),
-  password: z.string().min(10).max(100),
+  password: z.string().min(8).max(100),
 })
-export type SignupInputType = z.infer<typeof SignupInput>
+export type RegisterInputType = z.infer<typeof RegisterInput>
 
 export const LoginInput = z.object({
   email: z.string().email(),

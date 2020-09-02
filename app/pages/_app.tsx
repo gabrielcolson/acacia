@@ -1,7 +1,8 @@
-import { AppProps, ErrorComponent } from "blitz"
+import { AppProps, ErrorComponent, Router } from "blitz"
 import { ErrorBoundary, FallbackProps } from "react-error-boundary"
 import { queryCache } from "react-query"
-import LoginForm from "app/auth/components/LoginForm"
+
+import { CSSReset, theme, ThemeProvider } from "@chakra-ui/core"
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
@@ -15,14 +16,20 @@ export default function App({ Component, pageProps }: AppProps) {
         queryCache.resetErrorBoundaries()
       }}
     >
-      {getLayout(<Component {...pageProps} />)}
+      <ThemeProvider theme={theme}>
+        <CSSReset />
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
     </ErrorBoundary>
   )
 }
 
-function RootErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+function RootErrorFallback({ error, resetErrorBoundary }: FallbackProps): JSX.Element {
+  console.log("here", error)
   if (error?.name === "AuthenticationError") {
-    return <LoginForm onSuccess={resetErrorBoundary} />
+    resetErrorBoundary()
+    Router.push("/login")
+    return <></>
   } else if (error?.name === "AuthorizationError") {
     return (
       <ErrorComponent

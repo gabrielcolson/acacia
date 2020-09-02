@@ -1,14 +1,14 @@
 import db from "db"
 import { SessionContext } from "blitz"
-import { hashPassword } from "app/auth/auth-utils"
-import { SignupInput, SignupInputType } from "app/auth/validations"
+import { hashPassword } from "app/services/auth/auth-utils"
+import { RegisterInput, RegisterInputType } from "app/services/auth/validations"
 
-export default async function signup(
-  input: SignupInputType,
+export default async function register(
+  input: RegisterInputType,
   ctx: { session?: SessionContext } = {}
 ) {
   // This throws an error if input is invalid
-  const { email, password } = SignupInput.parse(input)
+  const { email, password } = RegisterInput.parse(input)
 
   const hashedPassword = await hashPassword(password)
   const user = await db.user.create({

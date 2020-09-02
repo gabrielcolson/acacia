@@ -71,10 +71,10 @@ acacia
 │   │   ├── mutations
 │   │   │   ├── login.ts
 │   │   │   ├── logout.ts
-│   │   │   └── signup.ts
+│   │   │   └── register.ts
 │   │   └── pages
 │   │       ├── login.tsx
-│   │       └── signup.tsx
+│   │       └── register.tsx
 │   ├── auth-utils.ts
 │   ├── validations.ts
 │   ├── components

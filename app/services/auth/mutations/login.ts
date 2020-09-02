@@ -1,6 +1,6 @@
 import { SessionContext } from "blitz"
-import { authenticateUser } from "app/auth/auth-utils"
-import { LoginInput, LoginInputType } from "../validations"
+import { authenticateUser } from "app/services/auth/auth-utils"
+import { LoginInput, LoginInputType } from "app/services/auth/validations"
 
 export default async function login(input: LoginInputType, ctx: { session?: SessionContext } = {}) {
   // This throws an error if input is invalid
