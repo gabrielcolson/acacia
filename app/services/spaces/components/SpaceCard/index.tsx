@@ -1,5 +1,5 @@
 import { Avatar, AvatarGroup, Box, Heading } from "@chakra-ui/core"
-import { SpaceWithUsers } from "app/services/spaces/queries/getMySpaces"
+import { SpaceWithUsers } from "app/services/spaces/types"
 
 export interface SpaceCardProps {
   space: SpaceWithUsers

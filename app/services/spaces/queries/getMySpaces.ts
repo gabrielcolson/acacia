@@ -1,10 +1,6 @@
 import { SessionContext } from "@blitzjs/core"
-import db, { Space } from "db"
-
-export type SpaceWithUsers = Space & {
-  owner: { id: string; name: string; pictureURL: string | null }
-  members: { id: string; name: string; pictureURL: string | null }[]
-}
+import db from "db"
+import { SpaceWithUsers } from "app/services/spaces/types"
 
 export default async function getMySpaces(
   _ = null,

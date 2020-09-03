@@ -19,7 +19,6 @@ export default passportAuth({
         callbackURL: "http://localhost:3000/api/auth/github/callback",
       },
       async function (_token: any, _tokenSecret: any, profile: any, done: any) {
-        console.log("profile:", profile)
         const { username, displayName } = profile
         const email = profile.emails && profile.emails[0]?.value
         const pictureURL = profile.photos && profile.photos[0]?.value
@@ -39,7 +38,6 @@ export default passportAuth({
             email,
           },
         })
-        console.log("user:", user)
         done(null, { publicData: { userId: user.id, roles: [user.role] } })
       }
     ),
