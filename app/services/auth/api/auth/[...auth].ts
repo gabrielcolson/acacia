@@ -16,7 +16,7 @@ export default passportAuth({
       {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/api/auth/github/callback",
+        callbackURL: `${process.env.BASE_URL}/api/auth/github/callback`,
       },
       async function (_token: any, _tokenSecret: any, profile: any, done: any) {
         const { username, displayName } = profile
