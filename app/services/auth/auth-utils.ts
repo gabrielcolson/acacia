@@ -29,6 +29,7 @@ export const authenticateUser = async (email: string, password: string) => {
       throw new AuthenticationError()
   }
 
-  delete user.hashedPassword
-  return user as Omit<User, "hashedPassword">
+  // remove the hashed password from the returned object
+  const { hashedPassword, ...publicUser } = user
+  return publicUser
 }
