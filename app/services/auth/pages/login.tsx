@@ -61,6 +61,7 @@ const LoginPage: BlitzPage = () => {
       <BlitzLink href="/register">
         <Link mt={3}>No account yet? Register</Link>
       </BlitzLink>
+      <Link href="/api/auth/github">Log in with GitHub</Link>
     </Flex>
   )
 }

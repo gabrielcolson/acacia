@@ -21,7 +21,7 @@ import { Suspense } from "react"
 const AvatarMenuButton = (): JSX.Element => {
   const user = useCurrentUser()
 
-  return <Avatar as={MenuButton} size="sm" name={user.name} />
+  return <Avatar as={MenuButton} size="sm" src={user.pictureURL || ""} name={user.name} />
 }
 
 export type LinkMenuItemProps = {

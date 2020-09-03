@@ -9,8 +9,8 @@ export default async function getMySpaces(_ = null, ctx: { session?: SessionCont
       OR: [{ ownerId: ctx.session!.userId }, { members: { some: { id: ctx.session!.userId } } }],
     },
     include: {
-      owner: { select: { name: true, id: true } },
-      members: { select: { name: true, id: true } },
+      owner: { select: { name: true, id: true, pictureURL: true, displayName: true } },
+      members: { select: { name: true, id: true, pictureURL: true, displayName: true } },
     },
   })
 }

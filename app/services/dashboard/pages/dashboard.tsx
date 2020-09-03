@@ -10,7 +10,7 @@ const UserInfo = () => {
   const user = useCurrentUser()
   return (
     <Flex alignItems="center">
-      <Avatar size="lg" name={user.name} />
+      <Avatar src={user.pictureURL || ""} size="lg" name={user.name} />
       <Flex flexDirection="column" ml={3}>
         <Heading>{user.name}</Heading>
         {user.email}
