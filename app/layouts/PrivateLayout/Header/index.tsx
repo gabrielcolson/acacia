@@ -66,7 +66,7 @@ const Header = (): JSX.Element => {
             >
               <AvatarMenuButton />
             </Suspense>
-            <MenuList>
+            <MenuList placement="bottom-end">
               <LinkMenuItem href="/dashboard">Dashboard</LinkMenuItem>
               <MenuDivider />
               <MenuItem isDisabled {...{ rightIcon: "add" }}>
