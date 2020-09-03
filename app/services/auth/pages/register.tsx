@@ -1,5 +1,16 @@
+import GithubIcon from "app/components/icons"
 import { Link as BlitzLink } from "blitz"
-import { Button, Flex, FormControl, FormErrorMessage, Heading, Link, Stack } from "@chakra-ui/core"
+import {
+  Box,
+  Button,
+  Divider,
+  FormControl,
+  FormErrorMessage,
+  Heading,
+  Icon,
+  Link,
+  Stack,
+} from "@chakra-ui/core"
 import TextInput from "app/components/TextInput"
 import { Form, Formik } from "formik"
 import React from "react"
@@ -12,10 +23,29 @@ const RegisterPage: BlitzPage = () => {
   const router = useRouter()
 
   return (
-    <Flex paddingX={3} flexDirection="column" align="center" justify="center" flex={1}>
+    <Stack spacing={5} paddingX={3} flexDirection="column" align="center" justify="center" flex={1}>
       <Heading textAlign="center" mb={5}>
         Create an Account
       </Heading>
+
+      <Button
+        bg="black"
+        color="white"
+        as="a"
+        {...{ href: "/api/auth/github" }}
+        _hover={{ bg: "blackAlpha.800" }}
+      >
+        <Icon as={GithubIcon} size="24px" mr={2} />
+        Continue with GitHub
+      </Button>
+
+      <Stack maxW="md" spacing={3} isInline align="center" w="100%">
+        <Divider w="full" />
+        <Box as="span" whiteSpace="nowrap" color="grey">
+          Or use your email
+        </Box>
+        <Divider w="full" />
+      </Stack>
 
       <Formik<RegisterInputType>
         initialValues={{ email: "", password: "", name: "" }}
@@ -60,7 +90,7 @@ const RegisterPage: BlitzPage = () => {
       <BlitzLink href="/login">
         <Link mt={3}>Already have an account? Log in</Link>
       </BlitzLink>
-    </Flex>
+    </Stack>
   )
 }
 

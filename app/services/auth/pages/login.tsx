@@ -1,5 +1,17 @@
 import { Link as BlitzLink } from "@blitzjs/core"
-import { Button, Flex, FormControl, FormErrorMessage, Heading, Link, Stack } from "@chakra-ui/core"
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  FormControl,
+  FormErrorMessage,
+  Heading,
+  Icon,
+  Link,
+  Stack,
+} from "@chakra-ui/core"
+import GithubIcon from "app/components/icons"
 import TextInput from "app/components/TextInput"
 import { Form, Formik } from "formik"
 import React from "react"
@@ -12,10 +24,28 @@ const LoginPage: BlitzPage = () => {
   const router = useRouter()
 
   return (
-    <Flex paddingX={3} flexDirection="column" align="center" justify="center" flex={1}>
-      <Heading textAlign="center" mb={5}>
-        Welcome back
-      </Heading>
+    <Stack spacing={5} paddingX={3} flexDirection="column" align="center" justify="center" flex={1}>
+      <Heading textAlign="center">Welcome back</Heading>
+
+      <Button
+        bg="black"
+        color="white"
+        as="a"
+        {...{ href: "/api/auth/github" }}
+        _hover={{ bg: "blackAlpha.800" }}
+      >
+        <Icon as={GithubIcon} size="24px" mr={2} />
+        Continue with GitHub
+      </Button>
+
+      <Stack maxW="md" spacing={3} isInline align="center" w="100%">
+        <Divider w="full" />
+        <Box as="span" whiteSpace="nowrap" color="grey">
+          Or use your email
+        </Box>
+        <Divider w="full" />
+      </Stack>
+
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={async (values, { setStatus }) => {
@@ -42,7 +72,9 @@ const LoginPage: BlitzPage = () => {
         {({ isSubmitting, status }) => (
           <Stack maxW="md" as={Form} width="full" shouldWrapChildren spacing={3}>
             <TextInput name="email" label="Email" />
+
             <TextInput name="password" label="Password" type="password" />
+
             <Button
               variantColor="teal"
               color="white"
@@ -52,17 +84,18 @@ const LoginPage: BlitzPage = () => {
             >
               Log in
             </Button>
+
             <FormControl isInvalid={!!status}>
               <FormErrorMessage>{status}</FormErrorMessage>
             </FormControl>
           </Stack>
         )}
       </Formik>
+
       <BlitzLink href="/register">
-        <Link mt={3}>No account yet? Register</Link>
+        <Link>No account yet? Register</Link>
       </BlitzLink>
-      <Link href="/api/auth/github">Log in with GitHub</Link>
-    </Flex>
+    </Stack>
   )
 }
 
