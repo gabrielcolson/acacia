@@ -18,17 +18,15 @@ const LoginPage: BlitzPage = () => {
       </Heading>
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={async (values, { setFieldError, setStatus }) => {
+        onSubmit={async (values, { setStatus }) => {
           try {
             await login(values)
             await router.push("/dashboard")
           } catch (error) {
             if (error.name === "AuthenticationError") {
               // This error comes from Prisma
-              console.log("auth error", error)
               setStatus("Invalid credentials")
             } else {
-              console.log("error:", error)
               setStatus(error.toString())
             }
           }
@@ -42,7 +40,7 @@ const LoginPage: BlitzPage = () => {
         }}
       >
         {({ isSubmitting, status }) => (
-          <Stack maxW="xl" as={Form} width="full" shouldWrapChildren spacing={3}>
+          <Stack maxW="md" as={Form} width="full" shouldWrapChildren spacing={3}>
             <TextInput name="email" label="Email" />
             <TextInput name="password" label="Password" type="password" />
             <Button
@@ -67,6 +65,6 @@ const LoginPage: BlitzPage = () => {
   )
 }
 
-LoginPage.getLayout = (page) => <PublicLayout title="Register">{page}</PublicLayout>
+LoginPage.getLayout = (page) => <PublicLayout title="Log in">{page}</PublicLayout>
 
 export default LoginPage

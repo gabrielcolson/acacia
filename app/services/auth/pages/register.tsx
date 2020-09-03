@@ -6,7 +6,7 @@ import React from "react"
 import { useRouter, BlitzPage } from "blitz"
 import PublicLayout from "app/layouts/PublicLayout"
 import register from "app/services/auth/mutations/register"
-import { RegisterInput } from "app/services/auth/validations"
+import { RegisterInput, RegisterInputType } from "app/services/auth/validations"
 
 const RegisterPage: BlitzPage = () => {
   const router = useRouter()
@@ -17,8 +17,8 @@ const RegisterPage: BlitzPage = () => {
         Create an Account
       </Heading>
 
-      <Formik
-        initialValues={{ email: "", password: "" }}
+      <Formik<RegisterInputType>
+        initialValues={{ email: "", password: "", name: "" }}
         onSubmit={async (values, { setFieldError, setStatus }) => {
           try {
             await register(values)
@@ -41,7 +41,7 @@ const RegisterPage: BlitzPage = () => {
         }}
       >
         {({ isSubmitting, status }) => (
-          <Stack maxW="xl" as={Form} width="full" shouldWrapChildren spacing={3}>
+          <Stack maxW="md" as={Form} width="full" shouldWrapChildren spacing={3}>
             <TextInput name="email" label="Email" />
             <TextInput name="name" label="Name" />
             <TextInput name="password" label="Password" type="password" />
