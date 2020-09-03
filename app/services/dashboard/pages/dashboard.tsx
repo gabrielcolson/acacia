@@ -23,24 +23,26 @@ const DashboardPage = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
-      <Stack
-        width="full"
-        bg="teal.50"
-        px={3}
-        py="48px"
-        borderBottomWidth="1px"
-        flexDirection={{ base: "column", md: "row" }}
-      >
-        <Box flex={1}>
-          <Suspense fallback="loading">
-            <UserInfo />
-          </Suspense>
-        </Box>
-        <Button variantColor="teal" size="lg" onClick={onOpen} mt={{ base: 6, md: 0 }}>
-          New Space
-        </Button>
-      </Stack>
-      <Box my="48px">
+      <Flex width="full" bg="teal.50" justify="center">
+        <Stack
+          maxW="5xl"
+          w="full"
+          px={5}
+          py="48px"
+          borderBottomWidth="1px"
+          flexDirection={{ base: "column", md: "row" }}
+        >
+          <Box flex={1}>
+            <Suspense fallback="loading">
+              <UserInfo />
+            </Suspense>
+          </Box>
+          <Button variantColor="teal" size="lg" onClick={onOpen} mt={{ base: 6, md: 0 }}>
+            New Space
+          </Button>
+        </Stack>
+      </Flex>
+      <Box my="48px" px={5}>
         <Suspense fallback="loading">
           <SpaceList />
         </Suspense>

@@ -45,43 +45,45 @@ const Header = (): JSX.Element => {
   }
 
   return (
-    <Flex p={3} w="full" align="center" color="white" bg="teal.500">
-      <Box flex={1}>
-        <Link href="/dashboard">
-          <Heading as="a" cursor="pointer" size="md">
-            Acacia
-          </Heading>
-        </Link>
-      </Box>
+    <Flex color="white" bg="teal.500" justify="center">
+      <Flex w="5xl" p={5} align="center">
+        <Box flex={1}>
+          <Link href="/dashboard">
+            <Heading as="a" cursor="pointer" size="md">
+              Acacia
+            </Heading>
+          </Link>
+        </Box>
 
-      <Stack isInline spacing={3} align="center" color="black">
-        <Menu>
-          <Suspense
-            fallback={
-              <Skeleton borderRadius="50%">
-                <Avatar size="sm" />
-              </Skeleton>
-            }
-          >
-            <AvatarMenuButton />
-          </Suspense>
-          <MenuList>
-            <LinkMenuItem href="/dashboard">Dashboard</LinkMenuItem>
-            <MenuDivider />
-            <MenuItem isDisabled {...{ rightIcon: "add" }}>
-              <Box as="span" flex={1}>
-                New Space
-              </Box>
-              <Icon name="add" />
-            </MenuItem>
-            <LinkMenuItem href="/settings">Settings</LinkMenuItem>
-            <MenuDivider />
-            <MenuItem isDisabled>Theme</MenuItem>
-            <MenuDivider />
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
-          </MenuList>
-        </Menu>
-      </Stack>
+        <Stack isInline spacing={3} align="center" color="black">
+          <Menu>
+            <Suspense
+              fallback={
+                <Skeleton borderRadius="50%">
+                  <Avatar size="sm" />
+                </Skeleton>
+              }
+            >
+              <AvatarMenuButton />
+            </Suspense>
+            <MenuList>
+              <LinkMenuItem href="/dashboard">Dashboard</LinkMenuItem>
+              <MenuDivider />
+              <MenuItem isDisabled {...{ rightIcon: "add" }}>
+                <Box as="span" flex={1}>
+                  New Space
+                </Box>
+                <Icon name="add" />
+              </MenuItem>
+              <LinkMenuItem href="/settings">Settings</LinkMenuItem>
+              <MenuDivider />
+              <MenuItem isDisabled>Theme</MenuItem>
+              <MenuDivider />
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            </MenuList>
+          </Menu>
+        </Stack>
+      </Flex>
     </Flex>
   )
 }

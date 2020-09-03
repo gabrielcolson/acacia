@@ -7,7 +7,7 @@ export interface SpaceCardProps {
 
 const SpaceCard = ({ space }: SpaceCardProps): JSX.Element => {
   return (
-    <Box width="full" rounded="lg" borderWidth="1px" p="24px">
+    <Box width="full" rounded="md" borderWidth="1px" p="24px">
       <Heading mt={1} size="lg">
         {space.name}
       </Heading>

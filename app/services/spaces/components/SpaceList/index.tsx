@@ -7,7 +7,7 @@ import { useQuery } from "blitz"
 const SpaceList = (): JSX.Element => {
   const [spaces] = useQuery(getMySpaces, null)
   return (
-    <Stack spacing={5} align="center" px={3}>
+    <Stack spacing={5} align="center">
       {spaces.map((space: SpaceWithUsers) => (
         <Box w="full" maxW="md" flex={1} key={space.id}>
           <SpaceCard space={space} />

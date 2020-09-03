@@ -23,7 +23,7 @@ export interface CreateSpaceModalProps {
 const CreateSpaceModal = ({ isOpen, onClose }: CreateSpaceModalProps): JSX.Element => {
   const router = useRouter()
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} {...{ style: { paddingRight: 10, paddingLeft: 10 } }}>
       <ModalOverlay />
 
       <Formik
@@ -51,7 +51,7 @@ const CreateSpaceModal = ({ isOpen, onClose }: CreateSpaceModalProps): JSX.Eleme
         }}
       >
         {({ isSubmitting }) => (
-          <ModalContent as={Form} {...{ noValidate: true }}>
+          <ModalContent as={Form} {...{ noValidate: true }} rounded="md">
             <ModalHeader>Create a new Space</ModalHeader>
 
             <ModalCloseButton />
