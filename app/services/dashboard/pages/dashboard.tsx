@@ -1,9 +1,9 @@
-import { Box, Flex, Skeleton, Stack } from "@chakra-ui/core"
+import { Box, Skeleton, Stack } from "@chakra-ui/core"
 import PrivateLayout from "app/layouts/PrivateLayout"
 import ProfileSection from "app/services/dashboard/components/ProfileSection"
 import SpaceCard from "app/services/spaces/components/SpaceCard"
 import SpaceList from "app/services/spaces/components/SpaceList"
-import { SpaceWithUsers } from "app/services/spaces/types"
+import { SpaceWithUsers } from "db"
 import { BlitzPage } from "blitz"
 import { Suspense } from "react"
 

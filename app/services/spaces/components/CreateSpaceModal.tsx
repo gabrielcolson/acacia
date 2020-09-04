@@ -1,9 +1,9 @@
 import TextInput from "app/components/TextInput"
+import { useCurrentUser } from "app/hooks/userCurrentUser"
 import { CreateSpaceInput } from "app/services/spaces/validations"
 import { useRouter } from "blitz"
 import {
   Button,
-  Flex,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -22,6 +22,7 @@ export interface CreateSpaceModalProps {
 
 const CreateSpaceModal = ({ isOpen, onClose }: CreateSpaceModalProps): JSX.Element => {
   const router = useRouter()
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} {...{ style: { paddingRight: 10, paddingLeft: 10 } }}>
       <ModalOverlay />
@@ -30,8 +31,8 @@ const CreateSpaceModal = ({ isOpen, onClose }: CreateSpaceModalProps): JSX.Eleme
         initialValues={{ name: "" }}
         onSubmit={async (values, { setStatus, setFieldError }) => {
           try {
-            await createSpace(values)
-            await router.push("/dashboard")
+            const space = await createSpace(values)
+            await router.push(`/${space.owner.name}/${space.name}`)
             onClose()
           } catch (error) {
             if (error.code === "P2002" && error.meta?.target?.includes("name")) {

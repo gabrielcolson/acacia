@@ -6,7 +6,6 @@ import { Suspense } from "react"
 
 const UserInfo = (): JSX.Element => {
   const user = useCurrentUser()
-  console.log(user.email)
   return (
     <Flex alignItems="center">
       <Avatar src={user.pictureURL || ""} size="lg" name={user.name} />
@@ -41,12 +40,11 @@ const ProfileSection = (): JSX.Element => {
           <UserInfo />
         </Suspense>
       </Box>
-      <Button variantColor="teal" size="lg" onClick={onOpen} mt={{ base: 6, md: 0 }}>
+      <Button variantColor="teal" size="md" onClick={onOpen} mt={{ base: 6, md: 0 }}>
         New Space
       </Button>
       <CreateSpaceModal isOpen={isOpen} onClose={onClose} />
     </SectionContainer>
   )
 }
-
 export default ProfileSection

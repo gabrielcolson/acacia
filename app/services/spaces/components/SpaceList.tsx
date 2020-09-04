@@ -1,6 +1,6 @@
 import { Box, Stack } from "@chakra-ui/core"
 import SpaceCard from "app/services/spaces/components/SpaceCard"
-import { SpaceWithUsers } from "app/services/spaces/types"
+import { SpaceWithUsers } from "db"
 import getMySpaces from "app/services/spaces/queries/getMySpaces"
 import { useQuery } from "blitz"
 

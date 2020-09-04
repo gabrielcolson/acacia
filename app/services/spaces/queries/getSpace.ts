@@ -1,12 +1,11 @@
 import { NotFoundError, SessionContext } from "blitz"
 import { GetSpaceInput, GetSpaceInputType } from "app/services/spaces/validations"
-import db from "db"
+import db, { PUBLIC_USER_FIELDS } from "db"
 
 export default async function getSpace(
   input: GetSpaceInputType,
   ctx: { session?: SessionContext } = {}
 ) {
-  console.log("here")
   ctx.session!.authorize()
 
   const { user: userName, space: spaceName } = GetSpaceInput.parse(input)
@@ -18,7 +17,6 @@ export default async function getSpace(
   if (!owner) {
     throw new NotFoundError()
   }
-  console.log("owner:", owner)
 
   const space = await db.space.findOne({
     where: {
@@ -29,17 +27,16 @@ export default async function getSpace(
     },
     include: {
       members: {
-        select: { name: true, displayName: true, id: true, pictureURL: true },
+        select: PUBLIC_USER_FIELDS,
       },
       owner: {
-        select: { id: true, name: true, displayName: true, pictureURL: true },
+        select: PUBLIC_USER_FIELDS,
       },
     },
   })
   if (!space) {
     throw new NotFoundError()
   }
-  console.log("space:", space)
 
   if (
     space.ownerId !== ctx.session!.userId &&

@@ -1,5 +1,5 @@
 import { Avatar, AvatarGroup, Box, Heading, Link } from "@chakra-ui/core"
-import { SpaceWithUsers } from "app/services/spaces/types"
+import { SpaceWithUsers } from "db"
 import { Link as BlitzLink } from "blitz"
 
 export interface SpaceCardProps {
