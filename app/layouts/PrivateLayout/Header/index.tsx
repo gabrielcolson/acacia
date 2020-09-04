@@ -17,6 +17,7 @@ import {
   Stack,
 } from "@chakra-ui/core"
 import { Suspense } from "react"
+import React from "react"
 
 const AvatarMenuButton = (): JSX.Element => {
   const user = useCurrentUser()
@@ -28,13 +29,13 @@ export type LinkMenuItemProps = {
   href: string
 } & MenuItemProps
 
-const LinkMenuItem = ({ href, ...props }: LinkMenuItemProps): JSX.Element => {
-  return (
+const LinkMenuItem = React.forwardRef(
+  ({ href, ...props }: LinkMenuItemProps, ref): JSX.Element => (
     <Link href={href}>
-      <MenuItem {...props} />
+      <MenuItem {...props} ref={ref} />
     </Link>
   )
-}
+)
 
 const Header = (): JSX.Element => {
   const router = useRouter()
@@ -57,30 +58,34 @@ const Header = (): JSX.Element => {
 
         <Stack isInline spacing={3} align="center" color="black">
           <Menu>
-            <Suspense
-              fallback={
-                <Skeleton borderRadius="50%">
-                  <Avatar size="sm" />
-                </Skeleton>
-              }
-            >
-              <AvatarMenuButton />
-            </Suspense>
-            <MenuList placement="bottom-end">
-              <LinkMenuItem href="/dashboard">Dashboard</LinkMenuItem>
-              <MenuDivider />
-              <MenuItem isDisabled {...{ rightIcon: "add" }}>
-                <Box as="span" flex={1}>
-                  New Space
-                </Box>
-                <Icon name="add" />
-              </MenuItem>
-              <LinkMenuItem href="/settings">Settings</LinkMenuItem>
-              <MenuDivider />
-              <MenuItem isDisabled>Theme</MenuItem>
-              <MenuDivider />
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            </MenuList>
+            {({ onClose }) => (
+              <>
+                <Suspense
+                  fallback={
+                    <Skeleton borderRadius="50%">
+                      <Avatar size="sm" />
+                    </Skeleton>
+                  }
+                >
+                  <AvatarMenuButton />
+                </Suspense>
+                <MenuList placement="bottom-end" onClick={onClose}>
+                  <LinkMenuItem href="/dashboard">Dashboard</LinkMenuItem>
+                  <MenuDivider />
+                  <MenuItem isDisabled {...{ rightIcon: "add" }}>
+                    <Box as="span" flex={1}>
+                      New Space
+                    </Box>
+                    <Icon name="add" />
+                  </MenuItem>
+                  <LinkMenuItem href="/settings">Settings</LinkMenuItem>
+                  <MenuDivider />
+                  <MenuItem isDisabled>Theme</MenuItem>
+                  <MenuDivider />
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </MenuList>
+              </>
+            )}
           </Menu>
         </Stack>
       </Flex>

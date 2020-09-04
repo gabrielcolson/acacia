@@ -3,6 +3,7 @@ import { CreateSpaceInput } from "app/services/spaces/validations"
 import { useRouter } from "blitz"
 import {
   Button,
+  Flex,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -13,7 +14,6 @@ import {
 } from "@chakra-ui/core"
 import createSpace from "app/services/spaces/mutations/createSpace"
 import { Form, Formik } from "formik"
-import React from "react"
 
 export interface CreateSpaceModalProps {
   isOpen: boolean
@@ -51,7 +51,13 @@ const CreateSpaceModal = ({ isOpen, onClose }: CreateSpaceModalProps): JSX.Eleme
         }}
       >
         {({ isSubmitting }) => (
-          <ModalContent as={Form} {...{ noValidate: true }} rounded="md">
+          <ModalContent
+            mx={{ base: 5, xs: "auto" }}
+            w="calc(100% - 2 * 20px)"
+            as={Form}
+            {...{ noValidate: true }}
+            rounded="md"
+          >
             <ModalHeader>Create a new Space</ModalHeader>
 
             <ModalCloseButton />
