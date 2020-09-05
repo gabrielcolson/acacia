@@ -15,7 +15,6 @@ import {
   MenuItemProps,
   MenuList,
   Skeleton,
-  Stack,
   useDisclosure,
 } from "@chakra-ui/core"
 import { Suspense } from "react"
@@ -49,7 +48,7 @@ const Header = (): JSX.Element => {
   }
 
   return (
-    <SectionContainer color="white" bg="teal.500" align="center">
+    <SectionContainer color="white" bg="teal.500" align="center" py={3}>
       <Box flex={1}>
         <Link href="/dashboard">
           <Heading as="a" cursor="pointer" size="md">

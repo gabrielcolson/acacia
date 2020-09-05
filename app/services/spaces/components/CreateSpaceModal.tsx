@@ -1,5 +1,4 @@
 import TextInput from "app/components/TextInput"
-import { useCurrentUser } from "app/hooks/userCurrentUser"
 import { CreateSpaceInput } from "app/services/spaces/validations"
 import { useRouter } from "blitz"
 import {

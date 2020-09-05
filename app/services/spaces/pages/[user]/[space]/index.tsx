@@ -1,5 +1,6 @@
 import { BlitzPage, useQuery, useRouter } from "@blitzjs/core"
 import PrivateLayout from "app/layouts/PrivateLayout"
+import SpaceLayout from "app/layouts/SpaceLayout"
 import getSpace from "app/services/spaces/queries/getSpace"
 import { Suspense } from "react"
 import TitleSection from "app/services/spaces/components/spacePage/TitleSection"
@@ -27,6 +28,10 @@ const SpacePageWrapper = (): JSX.Element => {
   )
 }
 
-SpacePageWrapper.getLayout = (page: BlitzPage) => <PrivateLayout>{page}</PrivateLayout>
+SpacePageWrapper.getLayout = (page: BlitzPage) => (
+  <PrivateLayout>
+    <SpaceLayout>{page}</SpaceLayout>
+  </PrivateLayout>
+)
 
 export default SpacePageWrapper

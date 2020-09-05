@@ -1,4 +1,5 @@
 import { Box, Skeleton, Stack } from "@chakra-ui/core"
+import DashboardLayout from "app/layouts/DashboardLayout"
 import PrivateLayout from "app/layouts/PrivateLayout"
 import ProfileSection from "app/services/dashboard/components/ProfileSection"
 import SpaceCard from "app/services/spaces/components/SpaceCard"
@@ -42,7 +43,9 @@ const DashboardPage = (): JSX.Element => (
 )
 
 DashboardPage.getLayout = (page: BlitzPage): JSX.Element => (
-  <PrivateLayout title="dashboard">{page}</PrivateLayout>
+  <PrivateLayout title="dashboard">
+    <DashboardLayout>{page}</DashboardLayout>
+  </PrivateLayout>
 )
 
 export default DashboardPage
