@@ -1,4 +1,6 @@
+import { getSessionContext } from "@blitzjs/server"
 import { AuthenticationError } from "blitz"
+import { GetServerSidePropsContext } from "next"
 import SecurePassword from "secure-password"
 import db from "db"
 
@@ -8,6 +10,7 @@ export const hashPassword = async (password: string) => {
   const hashedBuffer = await SP.hash(Buffer.from(password))
   return hashedBuffer.toString("base64")
 }
+
 export const verifyPassword = async (hashedPassword: string, password: string) => {
   return await SP.verify(Buffer.from(password), Buffer.from(hashedPassword, "base64"))
 }
@@ -32,4 +35,15 @@ export const authenticateUser = async (email: string, password: string) => {
   // remove the hashed password from the returned object
   const { hashedPassword, ...publicUser } = user
   return publicUser
+}
+
+export async function getServerSidePropsPublicPage({
+  req,
+  res,
+}: GetServerSidePropsContext): Promise<void> {
+  const session = await getSessionContext(req, res)
+  if (session.userId) {
+    res.writeHead(302, { Location: "/dashboard" })
+    res.end()
+  }
 }

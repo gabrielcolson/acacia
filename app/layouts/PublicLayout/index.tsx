@@ -1,7 +1,6 @@
 import { Flex } from "@chakra-ui/core"
-import getCurrentUser from "app/services/users/queries/getCurrentUser"
 import { ReactNode } from "react"
-import { Head, useQuery, useRouter } from "blitz"
+import { Head } from "blitz"
 
 import Header from "./Header"
 
@@ -10,28 +9,19 @@ type LayoutProps = {
   children: ReactNode
 }
 
-const Layout = ({ title, children }: LayoutProps) => {
-  const [user, { isLoading }] = useQuery(getCurrentUser, null, { suspense: false })
-  const router = useRouter()
+const Layout = ({ title, children }: LayoutProps) => (
+  <Flex flexDirection="column" minH="100vh">
+    <Head>
+      <title>{title || "acacia"}</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
 
-  if (!isLoading && user) {
-    router.push("/dashboard")
-  }
+    <Header />
 
-  return (
-    <Flex flexDirection="column" minH="100vh">
-      <Head>
-        <title>{title || "acacia"}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Header />
-
-      <Flex flexDirection="column" as="main" flex={1}>
-        {children}
-      </Flex>
+    <Flex flexDirection="column" as="main" flex={1}>
+      {children}
     </Flex>
-  )
-}
+  </Flex>
+)
 
 export default Layout

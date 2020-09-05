@@ -1,5 +1,6 @@
-import { BlitzPage } from "@blitzjs/core"
+import { BlitzPage, GetServerSideProps } from "@blitzjs/core"
 import { Heading } from "@chakra-ui/core"
+import { getServerSidePropsPublicPage } from "app/services/auth/auth-utils"
 import { Suspense } from "react"
 import PublicLayout from "app/layouts/PublicLayout"
 
@@ -20,5 +21,10 @@ const Home = (): JSX.Element => {
 }
 
 Home.getLayout = (page: BlitzPage) => <PublicLayout title="Home">{page}</PublicLayout>
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  await getServerSidePropsPublicPage(ctx)
+  return { props: {} }
+}
 
 export default Home

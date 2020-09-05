@@ -1,4 +1,6 @@
+import { GetServerSideProps } from "@blitzjs/core"
 import GithubIcon from "app/components/icons"
+import { getServerSidePropsPublicPage } from "app/services/auth/auth-utils"
 import { Link as BlitzLink } from "blitz"
 import {
   Box,
@@ -95,5 +97,10 @@ const RegisterPage: BlitzPage = () => {
 }
 
 RegisterPage.getLayout = (page) => <PublicLayout title="Register">{page}</PublicLayout>
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  await getServerSidePropsPublicPage(ctx)
+  return { props: {} }
+}
 
 export default RegisterPage

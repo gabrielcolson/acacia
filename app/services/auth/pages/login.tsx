@@ -1,4 +1,4 @@
-import { Link as BlitzLink } from "@blitzjs/core"
+import { GetServerSideProps, Link as BlitzLink } from "@blitzjs/core"
 import {
   Box,
   Button,
@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/core"
 import GithubIcon from "app/components/icons"
 import TextInput from "app/components/TextInput"
+import { getServerSidePropsPublicPage } from "app/services/auth/auth-utils"
 import { Form, Formik } from "formik"
 import React from "react"
 import { useRouter, BlitzPage } from "blitz"
@@ -99,5 +100,10 @@ const LoginPage: BlitzPage = () => {
 }
 
 LoginPage.getLayout = (page) => <PublicLayout title="Log in">{page}</PublicLayout>
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  await getServerSidePropsPublicPage(ctx)
+  return { props: {} }
+}
 
 export default LoginPage
