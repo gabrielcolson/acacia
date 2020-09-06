@@ -1,4 +1,4 @@
-import { PrismaClient, User, Space } from "@prisma/client"
+import { PrismaClient, User, Space, Expense } from "@prisma/client"
 export * from "@prisma/client"
 
 let prisma: PrismaClient
@@ -26,6 +26,10 @@ export const PUBLIC_USER_FIELDS: Record<keyof PublicUser, boolean> = {
 export type SpaceWithUsers = Space & {
   owner: PublicUser
   members: PublicUser[]
+}
+
+export type ExpenseWithPayer = Expense & {
+  payer: PublicUser
 }
 
 export default prisma
