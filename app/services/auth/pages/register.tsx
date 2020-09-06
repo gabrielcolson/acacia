@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "@blitzjs/core"
 import GithubIcon from "app/components/icons"
+import MainLayout from "app/layouts/MainLayout"
 import { getServerSidePropsPublicPage } from "app/services/auth/auth-utils"
 import { Link as BlitzLink } from "blitz"
 import {
@@ -17,7 +18,6 @@ import TextInput from "app/components/TextInput"
 import { Form, Formik } from "formik"
 import React from "react"
 import { useRouter, BlitzPage } from "blitz"
-import PublicLayout from "app/layouts/PublicLayout"
 import register from "app/services/auth/mutations/register"
 import { RegisterInput, RegisterInputType } from "app/services/auth/validations"
 
@@ -96,7 +96,7 @@ const RegisterPage: BlitzPage = () => {
   )
 }
 
-RegisterPage.getLayout = (page) => <PublicLayout title="Register">{page}</PublicLayout>
+RegisterPage.getLayout = (page) => <MainLayout title="Register">{page}</MainLayout>
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   await getServerSidePropsPublicPage(ctx)

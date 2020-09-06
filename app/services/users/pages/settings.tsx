@@ -1,15 +1,15 @@
 import { BlitzPage } from "@blitzjs/core"
 import DashboardLayout from "app/layouts/DashboardLayout"
-import PrivateLayout from "app/layouts/PrivateLayout"
+import MainLayout from "app/layouts/MainLayout"
 
 const SettingsPage = (): JSX.Element => {
   return <div>Settings</div>
 }
 
 SettingsPage.getLayout = (page: BlitzPage) => (
-  <PrivateLayout>
+  <MainLayout>
     <DashboardLayout>{page}</DashboardLayout>
-  </PrivateLayout>
+  </MainLayout>
 )
 
 export default SettingsPage

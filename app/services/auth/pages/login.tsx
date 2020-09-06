@@ -12,11 +12,11 @@ import {
 } from "@chakra-ui/core"
 import GithubIcon from "app/components/icons"
 import TextInput from "app/components/TextInput"
+import MainLayout from "app/layouts/MainLayout"
 import { getServerSidePropsPublicPage } from "app/services/auth/auth-utils"
 import { Form, Formik } from "formik"
 import React from "react"
 import { useRouter, BlitzPage } from "blitz"
-import PublicLayout from "app/layouts/PublicLayout"
 import login from "app/services/auth/mutations/login"
 import { LoginInput } from "app/services/auth/validations"
 
@@ -99,7 +99,7 @@ const LoginPage: BlitzPage = () => {
   )
 }
 
-LoginPage.getLayout = (page) => <PublicLayout title="Log in">{page}</PublicLayout>
+LoginPage.getLayout = (page) => <MainLayout title="Log in">{page}</MainLayout>
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   await getServerSidePropsPublicPage(ctx)

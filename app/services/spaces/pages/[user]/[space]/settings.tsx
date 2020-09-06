@@ -1,5 +1,5 @@
 import { BlitzPage } from "@blitzjs/core"
-import PrivateLayout from "app/layouts/PrivateLayout"
+import MainLayout from "app/layouts/MainLayout"
 import SpaceLayout from "app/layouts/SpaceLayout"
 
 const SpaceSettings = (): JSX.Element => {
@@ -7,9 +7,9 @@ const SpaceSettings = (): JSX.Element => {
 }
 
 SpaceSettings.getLayout = (page: BlitzPage): JSX.Element => (
-  <PrivateLayout>
+  <MainLayout>
     <SpaceLayout>{page}</SpaceLayout>
-  </PrivateLayout>
+  </MainLayout>
 )
 
 export default SpaceSettings

@@ -1,6 +1,6 @@
 import { Avatar, Box, Button, Flex, Heading, Skeleton, Stack, useDisclosure } from "@chakra-ui/core"
 import SectionContainer from "app/components/SectionContainer"
-import { useCurrentUser } from "app/hooks/userCurrentUser"
+import { useCurrentUser } from "app/hooks/useCurrentUser"
 import CreateSpaceModal from "app/services/spaces/components/CreateSpaceModal"
 import { Suspense } from "react"
 

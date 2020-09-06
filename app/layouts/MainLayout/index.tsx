@@ -4,12 +4,12 @@ import { ReactNode } from "react"
 
 import Header from "./Header"
 
-export interface PrivateLayoutProps {
+export interface MainLayoutProps {
   title?: string
   children: ReactNode
 }
 
-const PrivateLayout = ({ title, children }: PrivateLayoutProps): JSX.Element => {
+const MainLayout = ({ title, children }: MainLayoutProps): JSX.Element => {
   return (
     <Flex flexDirection="column" minH="100vh">
       <Head>
@@ -26,4 +26,4 @@ const PrivateLayout = ({ title, children }: PrivateLayoutProps): JSX.Element => 
   )
 }
 
-export default PrivateLayout
+export default MainLayout

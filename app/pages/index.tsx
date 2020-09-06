@@ -1,8 +1,8 @@
 import { BlitzPage, GetServerSideProps } from "@blitzjs/core"
 import { Heading } from "@chakra-ui/core"
+import MainLayout from "app/layouts/MainLayout"
 import { getServerSidePropsPublicPage } from "app/services/auth/auth-utils"
 import { Suspense } from "react"
-import PublicLayout from "app/layouts/PublicLayout"
 
 const Home = (): JSX.Element => {
   return (
@@ -20,7 +20,7 @@ const Home = (): JSX.Element => {
   )
 }
 
-Home.getLayout = (page: BlitzPage) => <PublicLayout title="Home">{page}</PublicLayout>
+Home.getLayout = (page: BlitzPage) => <MainLayout>{page}</MainLayout>
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   await getServerSidePropsPublicPage(ctx)
