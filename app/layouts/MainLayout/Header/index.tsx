@@ -1,4 +1,5 @@
 import ButtonLink from "app/components/ButtonLink"
+import { AcaciaIcon } from "app/components/icons"
 import SectionContainer from "app/components/SectionContainer"
 import logout from "app/services/auth/mutations/logout"
 import CreateSpaceModal from "app/services/spaces/components/CreateSpaceModal"
@@ -91,11 +92,14 @@ const Header = (): JSX.Element => {
   return (
     <SectionContainer color="white" bg="teal.500" align="center" py={3}>
       <Flex flex={1} height="40px" align="center">
-        <Link href={!!session.userId ? "/dashboard" : "/"}>
-          <Heading as="a" cursor="pointer" size="md">
-            Acacia
-          </Heading>
-        </Link>
+        <Flex align="center">
+          <Icon as={AcaciaIcon} mr={1} size="30px" color="white" />
+          <Link href={!!session.userId ? "/dashboard" : "/"}>
+            <Heading as="a" cursor="pointer" size="md">
+              Acacia
+            </Heading>
+          </Link>
+        </Flex>
       </Flex>
 
       <Suspense fallback={null}>

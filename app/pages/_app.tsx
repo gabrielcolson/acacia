@@ -25,7 +25,6 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 
 function RootErrorFallback({ error, resetErrorBoundary }: FallbackProps): JSX.Element {
-  console.log("here", error)
   if (error?.name === "AuthenticationError") {
     resetErrorBoundary()
     Router.push("/login")

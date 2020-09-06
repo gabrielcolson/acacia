@@ -6,14 +6,13 @@ import {
   FormControl,
   FormErrorMessage,
   Heading,
-  Icon,
   Link,
   Stack,
 } from "@chakra-ui/core"
-import GithubIcon from "app/components/icons"
 import TextInput from "app/components/TextInput"
 import MainLayout from "app/layouts/MainLayout"
 import { getServerSidePropsPublicPage } from "app/services/auth/auth-utils"
+import GithubButton from "app/services/auth/components/GithubButton"
 import { Form, Formik } from "formik"
 import React from "react"
 import { useRouter, BlitzPage } from "blitz"
@@ -27,16 +26,9 @@ const LoginPage: BlitzPage = () => {
     <Stack spacing={5} paddingX={3} flexDirection="column" align="center" justify="center" flex={1}>
       <Heading textAlign="center">Welcome back</Heading>
 
-      <Button
-        bg="black"
-        color="white"
-        as="a"
-        {...{ href: "/api/auth/github" }}
-        _hover={{ bg: "blackAlpha.800" }}
-      >
-        <Icon as={GithubIcon} size="24px" mr={2} />
-        Continue with GitHub
-      </Button>
+      <Box>
+        <GithubButton />
+      </Box>
 
       <Stack maxW="md" spacing={3} isInline align="center" w="100%">
         <Divider w="full" />

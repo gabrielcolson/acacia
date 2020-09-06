@@ -15,6 +15,7 @@ const SpaceLayout = ({ children }: SpaceLayoutProps): JSX.Element => {
   const tabs = [
     { name: "Overview", href: "/[user]/[space]", as: `/${user}/${space}` },
     { name: "Expenses", href: "/[user]/[space]/expenses", as: `/${user}/${space}/expenses` },
+    { name: "Members", href: "/[user]/[space]/members", as: `/${user}/${space}/members` },
     { name: "Settings", href: "/[user]/[space]/settings", as: `/${user}/${space}/settings` },
   ]
 

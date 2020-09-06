@@ -10,7 +10,6 @@ export interface NavTabsProps {
 
 const NavTabs = ({ tabs, children }: NavTabsProps): JSX.Element => {
   const router = useRouter()
-  console.log("pathname:", router)
   return (
     <>
       <SectionContainer spacing={3} isInline bg="teal.500" borderBottomWidth="1px">
