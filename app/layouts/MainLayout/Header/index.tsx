@@ -80,6 +80,7 @@ const LinkMenuItem = React.forwardRef(
 
 const Header = (): JSX.Element => {
   const router = useRouter()
+  const session = useSession()
   const { isOpen: isModalOpen, onOpen: onModalOpen, onClose: onModalClose } = useDisclosure()
 
   async function handleLogout(): Promise<void> {
@@ -90,7 +91,7 @@ const Header = (): JSX.Element => {
   return (
     <SectionContainer color="white" bg="teal.500" align="center" py={3}>
       <Flex flex={1} height="40px" align="center">
-        <Link href="/">
+        <Link href={!!session.userId ? "/dashboard" : "/"}>
           <Heading as="a" cursor="pointer" size="md">
             Acacia
           </Heading>
