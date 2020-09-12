@@ -2,7 +2,7 @@ import { Link as BlitzLink, useRouter } from "@blitzjs/core"
 import { Link } from "@chakra-ui/core"
 import SectionContainer from "app/components/SectionContainer"
 import { ReactNode } from "react"
-
+import { css } from "@emotion/core"
 export interface NavTabsProps {
   children: ReactNode
   tabs: { name: string; href: string; as?: string }[]
@@ -12,7 +12,18 @@ const NavTabs = ({ tabs, children }: NavTabsProps): JSX.Element => {
   const router = useRouter()
   return (
     <>
-      <SectionContainer spacing={3} isInline bg="teal.500" borderBottomWidth="1px">
+      <SectionContainer
+        overflow="auto"
+        spacing={3}
+        isInline
+        bg="teal.500"
+        borderBottomWidth="1px"
+        css={css`
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      >
         {tabs.map((tab) => (
           <Tab
             name={tab.name}

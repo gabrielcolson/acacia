@@ -14,13 +14,14 @@ if (process.env.NODE_ENV === "production") {
   prisma = globalThis["prisma"]
 }
 
-export type PublicUser = Pick<User, "name" | "id" | "displayName" | "pictureURL">
+export type PublicUser = Pick<User, "name" | "id" | "displayName" | "pictureURL" | "role">
 
 export const PUBLIC_USER_FIELDS: Record<keyof PublicUser, boolean> = {
   id: true,
   name: true,
   displayName: true,
   pictureURL: true,
+  role: true,
 }
 
 export type SpaceWithUsers = Space & {

@@ -2,11 +2,8 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
   NumberInput,
   NumberInputField,
-  NumberInputStepper,
 } from "@chakra-ui/core"
 import { useField } from "formik"
 
@@ -29,11 +26,7 @@ const AmountInput = ({ name, label }: AmountInputProps): JSX.Element => {
         onBlur={() => setTouched(true)}
         onChange={setValue}
       >
-        <NumberInputField type="number" />
-        <NumberInputStepper>
-          <NumberIncrementStepper />
-          <NumberDecrementStepper />
-        </NumberInputStepper>
+        <NumberInputField inputMode="numeric" />
       </NumberInput>
       <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>

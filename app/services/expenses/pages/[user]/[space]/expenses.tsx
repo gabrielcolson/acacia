@@ -2,14 +2,14 @@ import { BlitzPage } from "@blitzjs/core"
 import SectionContainer from "app/components/SectionContainer"
 import MainLayout from "app/layouts/MainLayout"
 import SpaceLayout from "app/layouts/SpaceLayout"
-import ExpenseList from "app/services/expenses/components/ExpenseList"
+import ExpenseTable from "app/services/expenses/components/ExpenseTable"
 import { Suspense } from "react"
 
 const ExpensesPage = (): JSX.Element => {
   return (
-    <SectionContainer>
+    <SectionContainer mt={5}>
       <Suspense fallback="loading">
-        <ExpenseList />
+        <ExpenseTable />
       </Suspense>
     </SectionContainer>
   )

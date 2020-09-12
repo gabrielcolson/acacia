@@ -1,5 +1,5 @@
 import { SessionContext } from "@blitzjs/core"
-import db from "db"
+import db, { PUBLIC_USER_FIELDS } from "db"
 import { SpaceWithUsers } from "db"
 
 export default async function getMySpaces(
@@ -13,8 +13,8 @@ export default async function getMySpaces(
       OR: [{ ownerId: ctx.session!.userId }, { members: { some: { id: ctx.session!.userId } } }],
     },
     include: {
-      owner: { select: { name: true, id: true, pictureURL: true, displayName: true } },
-      members: { select: { name: true, id: true, pictureURL: true, displayName: true } },
+      owner: { select: PUBLIC_USER_FIELDS },
+      members: { select: PUBLIC_USER_FIELDS },
     },
   })
 }

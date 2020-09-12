@@ -1,2 +1,2 @@
-web: npx next start -p $PORT
+web: npx blitz start -p $PORT
 release: npx blitz db migrate
