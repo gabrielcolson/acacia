@@ -12,7 +12,7 @@ export default async function register(
 
   const hashedPassword = await hashPassword(password)
   const user = await db.user.create({
-    data: { email, name, hashedPassword, role: "user" },
+    data: { email, name, hashedPassword, role: "user", displayName: name },
     select: PUBLIC_USER_FIELDS,
   })
 

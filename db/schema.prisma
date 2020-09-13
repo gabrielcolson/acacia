@@ -17,14 +17,14 @@ model User {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   name           String    @unique
-  displayName    String?
+  displayName    String
   email          String    @unique
   pictureURL     String?
   hashedPassword String?
   role           String    @default("user")
   sessions       Session[]
   ownedSpaces    Space[]   @relation("OwnedSpace")
-  joindedSpaces  Space[]
+  joinedSpaces   Space[]
   expenses       Expense[]
 }
 
