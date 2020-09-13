@@ -40,7 +40,6 @@ const AvatarMenuButton = (): JSX.Element => {
           color="white"
           href="/login"
           variant="outline"
-          variantColor="whiteAlpha.500"
           cursor="pointer"
           borderColor="whiteAlpha.500"
           _hover={{ borderColor: "white" }}
@@ -51,7 +50,6 @@ const AvatarMenuButton = (): JSX.Element => {
         <ButtonLink
           href="/register"
           cursor="pointer"
-          variantColor="white"
           bg="white"
           color="teal.500"
           borderWidth="1px"

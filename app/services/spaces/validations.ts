@@ -10,3 +10,9 @@ export const GetSpaceInput = z.object({
   space: z.string(),
 })
 export type GetSpaceInputType = z.infer<typeof GetSpaceInput>
+
+export const AddMemberInput = z.object({
+  whereSpace: GetSpaceInput,
+  email: z.string().email(),
+})
+export type AddMemberInputType = z.infer<typeof AddMemberInput>

@@ -1,14 +1,12 @@
-import { BlitzPage, useQuery } from "@blitzjs/core"
-import { useSpaceInfoFromURL } from "app/hooks/useSpaceInfoFromURL"
+import { BlitzPage } from "@blitzjs/core"
+import { useCurrentSpace } from "app/hooks/userCurrentSpace"
 import MainLayout from "app/layouts/MainLayout"
 import SpaceLayout from "app/layouts/SpaceLayout"
-import getSpace from "app/services/spaces/queries/getSpace"
 import { Suspense } from "react"
-import TitleSection from "app/services/spaces/components/spacePage/TitleSection"
+import TitleSection from "app/services/spaces/components/TitleSection"
 
 const SpacePage = (): JSX.Element => {
-  const { user: ownerName, space: spaceName } = useSpaceInfoFromURL()
-  const [space] = useQuery(getSpace, { user: ownerName, space: spaceName })
+  const space = useCurrentSpace()
 
   return (
     <>

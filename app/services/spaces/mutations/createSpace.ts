@@ -6,14 +6,15 @@ export default async function createSpace(
   input: CreateSpaceInputType,
   ctx: { session?: SessionContext } = {}
 ) {
-  ctx.session?.authorize()
+  ctx.session!.authorize()
 
   const { name } = CreateSpaceInput.parse(input)
 
   return await db.space.create({
     data: {
       name,
-      owner: { connect: { id: ctx.session?.userId } },
+      owner: { connect: { id: ctx.session!.userId } },
+      members: { connect: { id: ctx.session!.userId } },
     },
     include: {
       owner: { select: PUBLIC_USER_FIELDS },

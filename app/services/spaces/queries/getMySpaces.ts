@@ -16,5 +16,6 @@ export default async function getMySpaces(
       owner: { select: PUBLIC_USER_FIELDS },
       members: { select: PUBLIC_USER_FIELDS },
     },
+    orderBy: [{ createdAt: "desc" }],
   })
 }

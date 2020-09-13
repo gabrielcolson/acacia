@@ -25,8 +25,8 @@ const ExpenseTable = (): JSX.Element => {
         ),
       },
       {
-        Header: "Amount (€)",
-        accessor: "amount",
+        Header: "Amount",
+        accessor: (expense) => `${expense.amount}€`,
       },
       {
         Header: "Date",

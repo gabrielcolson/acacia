@@ -15,7 +15,6 @@ const SpaceCard = ({ space }: SpaceCardProps): JSX.Element => {
         </Heading>
       </BlitzLink>
       <AvatarGroup mt={3} size="sm">
-        <Avatar src={space.owner.pictureURL || ""} size="xs" name={space.owner.name} showBorder />
         {space.members.map((member) => (
           <Avatar
             src={member.pictureURL || ""}

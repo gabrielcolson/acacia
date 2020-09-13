@@ -1,4 +1,5 @@
 import { BlitzPage } from "@blitzjs/core"
+import { Heading } from "@chakra-ui/core"
 import SectionContainer from "app/components/SectionContainer"
 import MainLayout from "app/layouts/MainLayout"
 import SpaceLayout from "app/layouts/SpaceLayout"
@@ -7,11 +8,16 @@ import { Suspense } from "react"
 
 const ExpensesPage = (): JSX.Element => {
   return (
-    <SectionContainer mt={5}>
-      <Suspense fallback="loading">
-        <ExpenseTable />
-      </Suspense>
-    </SectionContainer>
+    <>
+      <SectionContainer mt={5}>
+        <Heading>Expenses</Heading>
+      </SectionContainer>
+      <SectionContainer mt={5}>
+        <Suspense fallback="loading">
+          <ExpenseTable />
+        </Suspense>
+      </SectionContainer>
+    </>
   )
 }
 
