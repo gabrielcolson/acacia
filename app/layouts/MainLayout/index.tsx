@@ -19,7 +19,7 @@ const MainLayout = ({ title, children }: MainLayoutProps): JSX.Element => {
 
       <Header />
 
-      <Flex flexDirection="column" as="main" flex={1}>
+      <Flex flexDirection="column" as="main" flex={1} pb={5}>
         {children}
       </Flex>
     </Flex>
