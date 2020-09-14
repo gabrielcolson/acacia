@@ -1,0 +1,23 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "joinedSpaces",
+      "type": "Space",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "joindedSpaces"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "User",
+      "field": "displayName",
+      "arity": "Required"
+    }
+  ]
+}

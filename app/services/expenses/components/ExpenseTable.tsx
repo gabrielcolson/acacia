@@ -29,6 +29,10 @@ const ExpenseTable = (): JSX.Element => {
         accessor: (expense) => `${expense.amount}€`,
       },
       {
+        Header: "Label",
+        accessor: "label",
+      },
+      {
         Header: "Date",
         accessor: (expense: ExpenseWithPayer) => expense.occurredAt.toLocaleDateString(),
       },
