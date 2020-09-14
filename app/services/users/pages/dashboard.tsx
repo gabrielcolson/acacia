@@ -1,7 +1,7 @@
 import { Box, Skeleton, Stack } from "@chakra-ui/core"
 import DashboardLayout from "app/layouts/DashboardLayout"
 import MainLayout from "app/layouts/MainLayout"
-import ProfileSection from "app/services/dashboard/components/ProfileSection"
+import ProfileSection from "app/services/users/components/ProfileSection"
 import SpaceCard from "app/services/spaces/components/SpaceCard"
 import SpaceList from "app/services/spaces/components/SpaceList"
 import { SpaceWithUsers } from "db"

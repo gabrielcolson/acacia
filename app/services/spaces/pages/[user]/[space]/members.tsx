@@ -1,6 +1,7 @@
 import { BlitzPage } from "@blitzjs/core"
 import { Heading } from "@chakra-ui/core"
 import SectionContainer from "app/components/SectionContainer"
+import TitleSectionContainer from "app/components/TitleSectionContainer"
 import MainLayout from "app/layouts/MainLayout"
 import SpaceLayout from "app/layouts/SpaceLayout"
 import AddMemberForm from "app/services/spaces/components/AddMemberForm"
@@ -9,9 +10,9 @@ import { Suspense } from "react"
 
 const MembersPage: BlitzPage = () => (
   <>
-    <SectionContainer mt={5}>
+    <TitleSectionContainer>
       <Heading>Members</Heading>
-    </SectionContainer>
+    </TitleSectionContainer>
     <SectionContainer mt={5}>
       <AddMemberForm w="full" />
     </SectionContainer>

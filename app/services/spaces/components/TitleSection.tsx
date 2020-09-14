@@ -1,5 +1,5 @@
 import { Box, Button, Heading, Stack, useDisclosure } from "@chakra-ui/core"
-import SectionContainer from "app/components/SectionContainer"
+import TitleSectionContainer from "app/components/TitleSectionContainer"
 import CreateExpenseModal from "app/services/expenses/components/CrateExpenseModal"
 import { SpaceWithUsers } from "db"
 import UserAvatar from "app/services/users/components/UserAvatar"
@@ -11,7 +11,7 @@ export interface TitleSectionProps {
 const TitleSection = ({ space }: TitleSectionProps) => {
   const { onOpen, isOpen, onClose } = useDisclosure()
   return (
-    <SectionContainer bg="teal.50" py="48px" flexDirection={{ base: "column", md: "row" }}>
+    <TitleSectionContainer flexDirection={{ base: "column", md: "row" }}>
       <Stack flex={1}>
         <Heading>{space.name}</Heading>
         <Stack align="center" isInline spacing={2} shouldWrapChildren>
@@ -27,7 +27,7 @@ const TitleSection = ({ space }: TitleSectionProps) => {
         New Expense
       </Button>
       <CreateExpenseModal spaceId={space.id} isOpen={isOpen} onClose={onClose} />
-    </SectionContainer>
+    </TitleSectionContainer>
   )
 }
 

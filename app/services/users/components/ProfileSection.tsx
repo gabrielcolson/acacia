@@ -1,5 +1,5 @@
 import { Avatar, Box, Button, Flex, Heading, Skeleton, Stack, useDisclosure } from "@chakra-ui/core"
-import SectionContainer from "app/components/SectionContainer"
+import TitleSectionContainer from "app/components/TitleSectionContainer"
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import CreateSpaceModal from "app/services/spaces/components/CreateSpaceModal"
 import { Suspense } from "react"
@@ -34,7 +34,7 @@ const UserInfoSkeleton = (): JSX.Element => (
 const ProfileSection = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
-    <SectionContainer py="48px" flexDirection={{ base: "column", md: "row" }} bg="teal.50">
+    <TitleSectionContainer flexDirection={{ base: "column", md: "row" }}>
       <Box flex={1}>
         <Suspense fallback={<UserInfoSkeleton />}>
           <UserInfo />
@@ -44,7 +44,7 @@ const ProfileSection = (): JSX.Element => {
         New Space
       </Button>
       <CreateSpaceModal isOpen={isOpen} onClose={onClose} />
-    </SectionContainer>
+    </TitleSectionContainer>
   )
 }
 export default ProfileSection
