@@ -37,15 +37,16 @@ export default passportAuth({
         }
 
         const user = await db.user.upsert({
-          where: { email },
+          where: { socialId: profile.id },
           create: {
             email,
             name: username,
             displayName,
             pictureURL,
+            socialId: profile.id,
           },
           update: {
-            email,
+            socialId: profile.id,
           },
         })
         done(null, { publicData: { userId: user.id, roles: [user.role] } })
