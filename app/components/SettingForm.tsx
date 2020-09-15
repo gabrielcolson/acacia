@@ -4,11 +4,13 @@ import { Formik, Form, FormikConfig } from "formik"
 
 export interface SettingFormProps<T> {
   footerText: string
-  children: ReactNode
+  children?: ReactNode
   initialValues: FormikConfig<T>["initialValues"]
   onSubmit: FormikConfig<T>["onSubmit"]
   title: string
   description: string
+  variant: "normal" | "danger"
+  buttonLabel: string
 }
 
 const SettingForm = <T extends object>({
@@ -18,6 +20,8 @@ const SettingForm = <T extends object>({
   onSubmit,
   title,
   description,
+  variant = "normal",
+  buttonLabel = "Save",
 }: SettingFormProps<T>): JSX.Element => (
   <Box rounded="lg" borderWidth={1} w="full">
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -32,8 +36,14 @@ const SettingForm = <T extends object>({
           </Box>
           <Flex bg="teal.50" p={5} align="center">
             <Text flex={1}>{footerText}</Text>
-            <Button type="submit" variantColor="teal" isLoading={isSubmitting}>
-              Save
+            <Button
+              size="md"
+              type="submit"
+              variantColor={variant === "normal" ? "teal" : "red"}
+              isLoading={isSubmitting}
+              minW="80px"
+            >
+              {buttonLabel}
             </Button>
           </Flex>
         </Box>
