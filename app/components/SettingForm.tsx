@@ -9,8 +9,8 @@ export interface SettingFormProps<T> {
   onSubmit: FormikConfig<T>["onSubmit"]
   title: string
   description: string
-  variant: "normal" | "danger"
-  buttonLabel: string
+  variant?: "normal" | "danger"
+  buttonLabel?: string
 }
 
 const SettingForm = <T extends object>({
